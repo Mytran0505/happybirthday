@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>お誕生日おめでとう</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style3.css">
+</head>
+
+<body>
+
+    <div class="overlay"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>Happy Birthday 🎂</h1>
+        <p>お誕生日おめでとうございます</p>
+    </header>
+
+    <!-- Message Card -->
+    <div class="card">
+        <div class="message">
+            <p>親愛なるあなたへ、</p>
+            <p>お誕生日おめでとうございます。</p>
+            <p>この特別な日に、心からお祝いします。</p>
+            <p>あなたがいつも健康で幸せでありますように。</p>
+            <p>毎日が喜びに満ちたものになりますように。</p>
+            <p>あなたの笑顔が、周りを明るく照らします。</p>
+            <p>新しい一年が素晴らしい冒険でいっぱいになりますように。</p>
+            <p>夢がすべて叶いますように。</p>
+            <p>家族や友人との絆がさらに強まりますように。</p>
+            <p>あなたは本当に特別な存在です。</p>
+            <p>これからも輝き続けてください。</p>
+            <p>心からの感謝を込めて。</p>
+        </div>
+    </div>
+    <!-- Hình ảnh tròn đẹp (pastel kawaii với hoa anh đào + bánh kem, bạn có thể thay link nếu thích) -->
+    <!-- Final Image -->
+    <div class="final-image">
+        <img src="https://images.unsplash.com/photo-1543087903-1ac2ec7aa8c5" alt="Birthday">
+        <p>🎉 Sinh nhật tuyệt vời nhé 🎉</p>
+    </div>
+
+    <audio autoplay loop>
+        <source src="https://media.vole.wtf/happy-birthday/jazz-trio.mp3" type="audio/mpeg">
+    </audio>
+    <!-- Button -->
+    <a href="page1.html" class="back-btn">トップに戻る</a>
+<script>
+    const message = document.querySelector('.message');
+    const card = document.querySelector('.card');
+    const finalImage = document.querySelector('.final-image');
+
+    message.addEventListener('animationend', () => {
+        // Ẩn card
+        card.style.opacity = '0';
+        card.style.transform = 'scale(0.9)';
+        card.style.transition = 'all 0.8s ease';
+
+        // Hiện ảnh sau 0.5s
+        setTimeout(() => {
+            card.style.display = 'none';
+            finalImage.classList.add('show');
+        }, 500);
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お誕生日おめでとう！🎂</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            height: 100vh; overflow: hidden; font-family: "Segoe UI", "Yu Gothic", "Meiryo", sans-serif;
+            color: #333; position: relative; transition: background 1s ease;
+        }
+        .page { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; opacity: 0; transition: opacity 1.2s ease; }
+        .page.active { opacity: 1; z-index: 10; }
+        #page1 { background: linear-gradient(135deg, #ffe6f2, #fff0f5); }
+        #page2 { background: linear-gradient(135deg, #fff0f5, #e6f3ff); }
+        #page3 { background: linear-gradient(135deg, #e6f3ff, #ffe6f2); }
+
+        /* Multi-image positions */
+        .multi-images { position: relative; width: 90%; height: 80%; max-width: 900px; margin: 1rem 0; }
+        .main-cake { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50%; max-width: 400px; border-radius: 20px; box-shadow: 0 15px 35px rgba(255,105,180,0.5); animation: zoomPulse 5s infinite alternate; z-index: 5; }
+        .side-img { position: absolute; width: 25%; max-width: 220px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); opacity: 0; animation: fadeInSide 1.5s forwards; }
+        .top-left { top: 5%; left: 5%; animation-delay: 0.3s; transform: rotate(-8deg); }
+        .top-right { top: 5%; right: 5%; animation-delay: 0.6s; transform: rotate(8deg); }
+        .bottom-left { bottom: 5%; left: 10%; animation-delay: 0.9s; transform: rotate(-5deg); }
+        .bottom-right { bottom: 5%; right: 10%; animation-delay: 1.2s; transform: rotate(5deg); }
+        @keyframes zoomPulse { from { transform: translate(-50%, -50%) scale(1); } to { transform: translate(-50%, -50%) scale(1.08); } }
+        @keyframes fadeInSide { to { opacity: 1; } }
+
+        /* Candle on main */
+        .candle { position: absolute; top: -15%; left: 50%; transform: translateX(-50%); font-size: 5rem; animation: flicker 0.6s infinite alternate; z-index: 6; }
+
+        /* Other elements */
+        .start-btn { font-size: 3rem; padding: 20px 40px; background: #ff6bcb; color: white; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 10px 20px rgba(255,105,180,0.4); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .music-text { font-size: 4rem; color: #ff1744; display: flex; justify-content: center; margin: 2rem 0; }
+        .music-text span { display: inline-block; animation: music-bounce 1.5s infinite; }
+        .music-text span:nth-child(odd) { animation-delay: 0.2s; }
+        .music-text span:nth-child(even) { animation-delay: 0.4s; }
+        @keyframes music-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+        .float-item { position: absolute; pointer-events: none; opacity: 0.8; animation: float 15s infinite linear; }
+        @keyframes float { 0% { transform: translateY(100vh) rotate(0deg); } 100% { transform: translateY(-100px) rotate(360deg); } }
+        .confetti { position: absolute; width: 10px; height: 10px; border-radius: 50%; pointer-events: none; animation: confetti-fall linear infinite; }
+        @keyframes confetti-fall { to { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
+    </style>
+</head>
+<body>
+
+<!-- Audio -->
+<audio id="birthdayMusic" src="https://archive.org/download/happybirthday_201909/YUI-%20Happy%20Birthday%20to%20you%20you.ogg" preload="auto"></audio>
+
+<!-- Page 1 -->
+<div id="page1" class="page active">
+    <h1 style="font-size: 4rem; color: #ff6bcb;">お誕生日おめでとう！</h1>
+    <p style="font-size: 2rem; margin: 1rem 0;">Hãy nhấn nút để bắt đầu!</p>
+    <button class="start-btn" onclick="startExperience()">Nhấn đây! 🎉</button>
+</div>
+
+<!-- Page 2: Multiple images in different positions -->
+<div id="page2" class="page">
+    <h1 style="font-size: 3rem; color: #e91e63;">Happy Birthday Party! 🎶🎂</h1>
+    <div class="multi-images">
+        <img id="mainCake" class="main-cake" src="https://thumbs.dreamstime.com/b/anime-style-birthday-background-cheerful-girl-surrounded-colorful-balloons-gifts-large-cake-340526607.jpg" alt="Main Cake">
+        <span class="candle">🕯️🔥</span>
+
+        <!-- Side images sẽ được thêm bằng JS -->
+    </div>
+    <p style="font-size: 1.8rem; color: #c2185b; z-index: 10;">Nhiều bánh kem và niềm vui dành riêng cho bạn nè! 💖✨</p>
+    <button style="margin-top: 1.5rem; padding: 12px 30px; background: #ba68c8; color: white; border: none; border-radius: 30px; cursor: pointer; font-size: 1.3rem; z-index: 10;" onclick="goToPage3()">Tiếp tục →</button>
+</div>
+
+<!-- Page 3 -->
+<div id="page3" class="page">
+    <h1 style="font-size: 3rem; color: #d500f9;">Chúc mừng sinh nhật!</h1>
+    <div class="music-text">
+        <span>お</span><span>誕</span><span>生</span><span>日</span><span>お</span><span>め</span><span>で</span><span>と</span><span>う</span><span>！</span>
+    </div>
+    <p id="personalMsg" style="font-size: 2rem; color: #ff1744; margin-top: 2rem;">Hạnh phúc mãi mãi nhé, Trân-chan! 🌸✨</p>
+</div>
+
+<!-- Floating decorations -->
+<div class="float-item" style="left:10%; animation-duration:18s; font-size:3rem;">🎈</div>
+<div class="float-item" style="left:25%; animation-duration:22s; animation-delay:-5s; font-size:2.5rem;">✨</div>
+<div class="float-item" style="left:40%; animation-duration:20s; animation-delay:-10s;">🎂</div>
+<div class="float-item" style="left:55%; animation-duration:25s; font-size:2rem;">💖</div>
+<div class="float-item" style="left:70%; animation-duration:19s; animation-delay:-3s;">🎉</div>
+<div class="float-item" style="left:85%; animation-duration:23s; animation-delay:-8s; font-size:2.8rem;">🌸</div>
+
+<script>
+// Config
+const config = {
+    name: "Trân",
+    nickname: "トランちゃん",
+    personalMessage: "Hạnh phúc mãi mãi nhé, Trân-chan! 🌸✨",
+    multiImages: [
+        { url: "https://thumbs.dreamstime.com/b/colorful-kawaii-birthday-cake-rainbow-candle-celebrate-adorable-featuring-cute-eyes-perfect-any-festive-383187214.jpg", class: "top-left" },
+        { url: "https://thumbs.dreamstime.com/b/pastel-birthday-cake-confetti-candles-good-resolution-stock-photo-pastel-birthday-cake-confetti-candles-415223386.jpg", class: "top-right" },
+        { url: "https://media.craiyon.com/2025-10-03/0AFsUUT7R-2uK0vZr6KrPg.webp", class: "bottom-left" },
+        { url: "https://thumbs.dreamstime.com/b/joyful-anime-girl-stands-festive-birthday-celebration-holding-cake-adorned-candles-colorful-balloons-streamers-340270133.jpg", class: "bottom-right" }
+        // Thêm ảnh khác nếu muốn: { url: "LINK_MỚI", class: "top-left" } hoặc tạo class mới
+    ]
+};
+
+// Apply config
+document.getElementById("personalMsg").textContent = config.personalMessage;
+
+// Add side images dynamically
+const multiContainer = document.querySelector('.multi-images');
+config.multiImages.forEach(img => {
+    const side = document.createElement('img');
+    side.src = img.url;
+    side.className = `side-img ${img.class}`;
+    side.alt = "Birthday Side Image";
+    multiContainer.appendChild(side);
+});
+
+// Main cake custom if needed
+// document.getElementById("mainCake").src = "YOUR_MAIN_IMAGE_URL"; // Nếu muốn thay ảnh chính giữa
+
+// Functions
+function startExperience() {
+    document.getElementById("page1").classList.remove("active");
+    document.getElementById("page2").classList.add("active");
+    document.getElementById("birthdayMusic").play();
+    createConfettiBurst(60);
+    setTimeout(goToPage3, 25000); // Auto next sau ~25s
+}
+
+function goToPage3() {
+    document.getElementById("page2").classList.remove("active");
+    document.getElementById("page3").classList.add("active");
+}
+
+// Confetti
+function createConfetti() {
+    const confetti = document.createElement("div");
+    confetti.className = "confetti";
+    const colors = ["#ff3366", "#ff6bcb", "#ba68c8", "#ab47bc", "#7e57c2"];
+    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    confetti.style.opacity = Math.random() * 0.5 + 0.5;
+    document.body.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 5000);
+}
+
+function createConfettiBurst(count) {
+    for (let i = 0; i < count; i++) setTimeout(createConfetti, i * 40);
+}
+setInterval(createConfetti, 250);
+</script>
+</body>
+</html>
