@@ -32,10 +32,16 @@
     <div class="cake-container">
         <img src="https://bestanimations.com/media/birthday/1147226634birthday-cake-burning-candles-animated-card-gif.gif" alt="誕生日ケーキ">
     </div>
-    <audio autoplay loop>
+    <audio id="bgm" autoplay loop>
         <source src="audio/audio2.mp3" type="audio/mpeg">
     </audio>
     <a href="page3.html" class="button">次へ</a>
     <script src="script2.js"></script>
+    <script>
+        const audio = document.getElementById('bgm');
+        document.addEventListener('click', () => {
+            audio.play();
+        }, { once: true });
+    </script>
 </body>
 </html>

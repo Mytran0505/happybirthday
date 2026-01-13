@@ -45,11 +45,15 @@
         <a href="index.html" class="back-btn">トップに戻る</a>
     </div>
 
-    <audio autoplay loop>
+    <audio id="bgm" autoplay loop>
         <source src="https://media.vole.wtf/happy-birthday/jazz-trio.mp3" type="audio/mpeg">
     </audio>
 
 <script>
+    const audio = document.getElementById('bgm');
+    document.addEventListener('click', () => {
+        audio.play();
+    }, { once: true });
     const header    = document.querySelector('.header');
     const card      = document.querySelector('.card');
     const finalImage = document.querySelector('.final-image');
