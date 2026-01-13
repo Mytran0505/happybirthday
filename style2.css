@@ -17,8 +17,9 @@ body {
 .ribbon-top {
     width: 100%;
     text-align: center;
-    margin: 20px 0 10px;
+    /* margin: 20px 0 10px; */
     position: relative;
+    padding: 55px;
 }
 
 .ribbon-top img {
@@ -32,7 +33,7 @@ h1 {
     font-family: 'Yuji Syuku', cursive;
     font-size: 2em;
     margin: 0;
-    color: #fff;
+    color: #ff004e;
     text-shadow: 0 0 25px #ff69b4, 0 0 50px #ffd700;
     animation: glow 3s infinite alternate;
 }
@@ -45,7 +46,7 @@ h1 {
 .carousel {
     overflow: hidden;
     width: 70%;
-    margin: 20px 0;
+    /* margin: 20px 0; */
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
@@ -76,12 +77,12 @@ h1 {
 
 .cake-container {
     /* margin: 10px 0; */
-    padding-top: 10px;
+    padding-top: 50px;
     animation: floatCake 4s ease-in-out infinite;
 }
 
 .cake-container img {
-    width: 170px;
+    width: 200px;
     height: auto;
     filter: drop-shadow(0 10px 30px rgba(255,105,180,0.7));
 }
@@ -92,7 +93,7 @@ h1 {
 }
 
 .button {
-    margin-bottom: 5px;
+    margin-top: 25px;
     padding: 10px 40px;
     background: linear-gradient(135deg, #ffd700, #ff69b4);
     color: white;
