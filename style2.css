@@ -53,7 +53,8 @@ h1 {
 
 .carousel-track {
     display: flex;
-    animation: slide 5s linear infinite;
+    animation: slide 20s linear infinite;
+    width: max-content;
 }
 
 .carousel-track img {
@@ -72,7 +73,7 @@ h1 {
 
 @keyframes slide {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    100% { transform: translateX(-33.333%); }
 }
 
 .cake-container {

@@ -10,62 +10,68 @@
 
     <link rel="stylesheet" href="style3.css">
 </head>
-
 <body>
 
     <div class="overlay"></div>
 
     <!-- Header -->
     <header class="header">
-        <h1>Happy Birthday 🎂</h1>
-        <p>お誕生日おめでとうございます</p>
+        <h1>お誕生日おめでとうございます</h1>
     </header>
 
     <!-- Message Card -->
     <div class="card">
-        <div class="message">
-            <p>親愛なるあなたへ、</p>
+        <div class="message active">
+            <p>親愛なるカンさんへ、</p>
             <p>お誕生日おめでとうございます。</p>
-            <p>この特別な日に、心からお祝いします。</p>
-            <p>あなたがいつも健康で幸せでありますように。</p>
-            <p>毎日が喜びに満ちたものになりますように。</p>
-            <p>あなたの笑顔が、周りを明るく照らします。</p>
-            <p>新しい一年が素晴らしい冒険でいっぱいになりますように。</p>
-            <p>夢がすべて叶いますように。</p>
-            <p>家族や友人との絆がさらに強まりますように。</p>
-            <p>あなたは本当に特別な存在です。</p>
-            <p>これからも輝き続けてください。</p>
-            <p>心からの感謝を込めて。</p>
+            <p>同じ寮で一緒に過ごせて、本当に嬉しく思っています。</p>
+            <p>国は違っても、こうして出会えたご縁に心から感謝しています。</p>
+            <p>カンさんはいつも優しくて、周りを明るくしてくれる人です。</p>
+            <p>一緒に話したり、笑ったりする時間は、私にとってとても大切な思い出です。</p>
+            <p>これからも、カンさんが健康で幸せな毎日を過ごせますように。</p>
+            <p>新しい一年が、笑顔と素敵な思い出でいっぱいになりますように。</p>
+            <p>同じ時間を過ごせたこと、本当に感謝しています。</p>
+            <p>これからも、カンさんらしく輝き続けてください。</p>
+            <p>心からの感謝と、たくさんの想いを込めて。</p>
         </div>
     </div>
-    <!-- Hình ảnh tròn đẹp (pastel kawaii với hoa anh đào + bánh kem, bạn có thể thay link nếu thích) -->
-    <!-- Final Image -->
+    <!-- Final Image + Button nằm bên dưới -->
     <div class="final-image">
-        <img src="https://images.unsplash.com/photo-1543087903-1ac2ec7aa8c5" alt="Birthday">
-        <p>🎉 Sinh nhật tuyệt vời nhé 🎉</p>
+        <img src="images/circle-image.png" alt="Birthday">
+        <p>カンさん</p>
+        <p>最高の誕生日を過ごしてね♡</p>
+        
+        <!-- Nút chuyển về trang đầu -->
+        <a href="index.html" class="back-btn">トップに戻る</a>
     </div>
 
     <audio autoplay loop>
         <source src="https://media.vole.wtf/happy-birthday/jazz-trio.mp3" type="audio/mpeg">
     </audio>
-    <!-- Button -->
-    <a href="index.html" class="back-btn">トップに戻る</a>
+
 <script>
-    const message = document.querySelector('.message');
-    const card = document.querySelector('.card');
+    const header    = document.querySelector('.header');
+    const card      = document.querySelector('.card');
     const finalImage = document.querySelector('.final-image');
+    const message   = document.querySelector('.message');
 
+    // Không cần add class active nữa vì đã có sẵn trong HTML
+
+    // Khi animation chữ chạy xong thì chuyển cảnh
     message.addEventListener('animationend', () => {
-        // Ẩn card
-        card.style.opacity = '0';
-        card.style.transform = 'scale(0.9)';
-        card.style.transition = 'all 0.8s ease';
+        header.style.transition = 'opacity 0.8s ease';
+        card.style.transition   = 'opacity 0.8s ease';
 
-        // Hiện ảnh sau 0.5s
+        header.style.opacity = '0';
+        card.style.opacity   = '0';
+
         setTimeout(() => {
-            card.style.display = 'none';
+            header.style.display = 'none';
+            card.style.display   = 'none';
+
+            // Hiện phần chúc mừng cuối cùng
             finalImage.classList.add('show');
-        }, 500);
+        }, 800); // chờ fade out xong
     });
 </script>
 
